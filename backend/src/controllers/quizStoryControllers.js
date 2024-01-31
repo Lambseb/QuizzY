@@ -5,10 +5,10 @@ const tables = require("../tables");
 const browse = async (req, res, next) => {
   try {
     // Fetch all quiz_storys from the database
-    const quiz_storys = await tables.quiz_story.readAll();
+    const quizStorys = await tables.quiz_story.readAll();
 
     // Respond with the quiz_storys in JSON format
-    res.status(200).json(quiz_storys);
+    res.status(200).json(quizStorys);
   } catch (err) {
     // Pass any errors to the error-handling middleware
     next(err);
@@ -19,14 +19,14 @@ const browse = async (req, res, next) => {
 const read = async (req, res, next) => {
   try {
     // Fetch a specific quiz_story from the database based on the provided ID
-    const quiz_story = await tables.quiz_story.read(req.params.id);
+    const quizStory = await tables.quiz_story.read(req.params.id);
 
     // If the quiz_story is not found, respond with HTTP 404 (Not Found)
     // Otherwise, respond with the quiz_story in JSON format
-    if (quiz_story == null) {
+    if (quizStory == null) {
       res.sendStatus(404);
     } else {
-      res.status(200).json(quiz_story);
+      res.status(200).json(quizStory);
     }
   } catch (err) {
     // Pass any errors to the error-handling middleware
@@ -38,11 +38,11 @@ const read = async (req, res, next) => {
 // This operation is not yet implemented
 const edit = async (req, res, next) => {
   // Extract the quiz_story data from the request body
-  const quiz_story = req.body;
+  const quizStory = req.body;
 
   try {
     // Insert the quiz_story into the database
-    await tables.quiz_story.update(quiz_story, req.params.id);
+    await tables.quiz_story.update(quizStory, req.params.id);
 
     // Respond with HTTP 204 (No Content)
     res.sendStatus(204);
@@ -55,11 +55,11 @@ const edit = async (req, res, next) => {
 // The A of BREAD - Add (Create) operation
 const add = async (req, res, next) => {
   // Extract the quiz_story data from the request body
-  const quiz_story = req.body;
+  const quizStory = req.body;
 
   try {
     // Insert the quiz_story into the database
-    const insertId = await tables.quiz_story.create(quiz_story);
+    const insertId = await tables.quiz_story.create(quizStory);
 
     // Respond with HTTP 201 (Created) and the ID of the newly inserted quiz_story
     res.status(201).json({ ...req.body, id: insertId });

@@ -11,11 +11,11 @@ router.get("/responses/:id", responseControllers.read);
 // router.put("/responses/:id", validateResponse, responseControllers.edit);
 // router.delete("/responses/:id", responseControllers.destroy);
 
-const quizControllers = require("./controllers/quizControllers");
+const { browse, read } = require("./controllers/quizControllers");
 // const validateQuiz = require("./validators/validateQuiz");
 
-router.get("/quiz", quizControllers.browse);
-router.get("/quiz/:id", quizControllers.read);
+router.get("/quiz", browse);
+router.get("/quiz/:id", read);
 // router.post("/quizs", validateQuiz, quizControllers.add);
 // router.put("/quizs/:id", validateQuiz, quizControllers.edit);
 // router.delete("/quizs/:id", quizControllers.destroy);
@@ -46,13 +46,12 @@ router.get("/themes/:id", themeControllers.read);
 // router.put("/themes/:id", validateTheme, themeControllers.edit);
 // router.delete("/themes/:id", themeControllers.destroy);
 
-const userControllers = require("./controllers/userControllers");
-// const validateUser = require("./validators/validateUser");
+const userRouter = require("./router/userRouter");
 
-router.get("/users", userControllers.browse);
-router.get("/users/:id", userControllers.read);
-// router.post("/users", validateUser, userControllers.add);
-// router.put("/users/:id", validateUser, userControllers.edit);
-// router.delete("/users/:id", userControllers.destroy);
+router.use("/users", userRouter);
+
+const loginRouter = require("./router/authentification");
+
+router.use("/login", loginRouter);
 
 module.exports = router;
