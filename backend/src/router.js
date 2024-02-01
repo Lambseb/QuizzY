@@ -11,12 +11,13 @@ router.get("/responses/:id", responseControllers.read);
 // router.put("/responses/:id", validateResponse, responseControllers.edit);
 // router.delete("/responses/:id", responseControllers.destroy);
 
-const { browse, read } = require("./controllers/quizControllers");
+const { browse, read, browseByQuiz } = require("./controllers/quizControllers");
 // const validateQuiz = require("./validators/validateQuiz");
 
-router.get("/quiz", browse);
+router.get("/quiz", browseByQuiz);
+router.get("/quiz/name_quiz", browse);
 router.get("/quiz/:id", read);
-// router.post("/quizs", validateQuiz, quizControllers.add);
+// router.post("/quiz", validateQuiz, quizControllers.add);
 // router.put("/quizs/:id", validateQuiz, quizControllers.edit);
 // router.delete("/quizs/:id", quizControllers.destroy);
 

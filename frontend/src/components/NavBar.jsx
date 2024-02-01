@@ -7,7 +7,7 @@ export default function NavBar({ auth }) {
   return (
     <header>
       <nav className="flex justify-between mx-2">
-        <NavLink to="/" className="w-[5rem]  h-[5rem] rounded-full">
+        <NavLink to="/" className="w-[4rem]  h-[4rem]">
           <img
             src={quizzyImage}
             className="w-[4rem] h-[4rem] rounded-full"

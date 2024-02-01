@@ -35,13 +35,21 @@ class QuizManager extends AbstractManager {
   }
 
   async readAll() {
-    // Execute the SQL SELECT query to retrieve all quizs from the "quiz" table
+    // Execute the SQL SELECT query to retrieve all responses from the "response" table
     const [rows] = await this.database.query(`select * from ${this.table}`);
 
-    // Return the array of quizs
+    // Return the array of responses
     return rows;
   }
 
+  async readAllByQuiz() {
+    // Execute the SQL SELECT query to retrieve all users from the "user" table
+    const [rows] = await this.database.query(
+      `SELECT  name, theme_id, user_id, response.${this.table}_id,  response.response, response.value AS value FROM ${this.table}  JOIN response ON ${this.table}.id = response.${this.table}_id
+      WHERE ${this.table}.id = response.${this.table}_id ORDER BY ${this.table}.id ASC;`
+    );
+    return rows;
+  }
   // The U of CRUD - Update operation
   // TODO: Implement the update operation to modify an existing quiz
 

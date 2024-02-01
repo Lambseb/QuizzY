@@ -17,14 +17,13 @@ export default function RegisterForm() {
       .post(`${import.meta.env.VITE_BACKEND_URL}/api/users`, data)
       .then(navigate("/login"));
   };
-
   const passwordRef = useRef({});
   passwordRef.current = watch("password", "");
 
   const regexForm = /^(?=.*d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^wds:])([^s]){4,16}$/;
 
   return (
-    <div className="w-full max-w-md bg-white rounded-lg p-6">
+    <div className="w-full max-w-md bg-white  rounded-lg p-6">
       <h2 className="text-2xl font-bold text-primary mb-4">Créer un compte</h2>
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col">
         <input
@@ -54,7 +53,7 @@ export default function RegisterForm() {
         {errors.email?.message && (
           <p role="alert" className="text-lg font-light">
             {" "}
-            {errors.email.message || "Champ obligatoire"}{" "}
+            {errors.email.message || "Champ obligatoire"}
           </p>
         )}
         <input

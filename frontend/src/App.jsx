@@ -7,7 +7,7 @@ function App() {
   const [auth, setAuth] = useState();
   console.log("App.jsx", auth);
   return (
-    <div className="App">
+    <div>
       <NavBar auth={auth} setAuth={setAuth} />
       <Outlet context={{ auth, setAuth }} />
     </div>

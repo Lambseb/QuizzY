@@ -5,10 +5,10 @@ const tables = require("../tables");
 const browse = async (req, res, next) => {
   try {
     // Fetch all quiz_storys from the database
-    const quizStorys = await tables.quiz_story.readAll();
+    const quizStory = await tables.quiz_story.readAll();
 
     // Respond with the quiz_storys in JSON format
-    res.status(200).json(quizStorys);
+    res.status(200).json(quizStory);
   } catch (err) {
     // Pass any errors to the error-handling middleware
     next(err);

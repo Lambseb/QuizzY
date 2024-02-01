@@ -23,7 +23,6 @@ export default function LoginForm() {
         }
       );
       if (response.status === 200) {
-        toast.success(" bienvenue sur QuizzY !");
         const auth = await response.data;
         setAuth(auth);
         navigate("/");

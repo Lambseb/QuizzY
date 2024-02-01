@@ -13,6 +13,7 @@ module.exports = {
       },
       backgroundImage: {
         cheh: "url('./src/assets/cheh.jpeg')",
+        quizzyBg: "url('./src/assets/backGroundQuizzy.png')",
       },
     },
     fontFamily: {

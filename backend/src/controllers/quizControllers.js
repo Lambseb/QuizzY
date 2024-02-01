@@ -4,11 +4,23 @@ const tables = require("../tables");
 // The B of BREAD - Browse (Read All) operation
 const browse = async (req, res, next) => {
   try {
+    // Fetch all quiz_storys from the database
+    const quiz = await tables.quiz.readAll();
+
+    // Respond with the quiz in JSON format
+    res.status(200).json(quiz);
+  } catch (err) {
+    // Pass any errors to the error-handling middleware
+    next(err);
+  }
+};
+const browseByQuiz = async (req, res, next) => {
+  try {
     // Fetch all quizs from the database
-    const quizs = await tables.quiz.readAll();
+    const quiz = await tables.quiz.readAllByQuiz();
 
     // Respond with the quizs in JSON format
-    res.status(200).json(quizs);
+    res.status(200).json(quiz);
   } catch (err) {
     // Pass any errors to the error-handling middleware
     next(err);
@@ -87,6 +99,7 @@ const destroy = async (req, res, next) => {
 
 // Ready to export the controller functions
 module.exports = {
+  browseByQuiz,
   browse,
   read,
   edit,

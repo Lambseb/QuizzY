@@ -48,7 +48,6 @@ const edit = async (req, res, next) => {
 const add = async (req, res, next) => {
   const { username, email } = req.body;
   const password = req.body.hashedpassword;
-  console.log(req.body);
   try {
     const newUser = await tables.user.create(username, email, password);
     res.status(201).json({ id: newUser.insertId, message: "user create" });
