@@ -9,12 +9,12 @@ class ResponseManager extends AbstractManager {
 
   // The C of CRUD - Create operation
 
-  async create(response) {
-    const { responseName, value } = response;
+  async create(responseTable) {
+    const { response, value, quiz_id: quizId } = responseTable;
     // Execute the SQL INSERT query to add a new response to the "response" table
     const [result] = await this.database.query(
-      `insert into ${this.table} (response, value) values (?, ?)`,
-      [responseName, value]
+      `INSERT INTO ${this.table} (response, value, quiz_id) values (?, ?, ?)`,
+      [response, value, quizId]
     );
 
     // Return the ID of the newly inserted response

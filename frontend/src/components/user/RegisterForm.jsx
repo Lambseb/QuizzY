@@ -41,6 +41,7 @@ export default function RegisterForm() {
         <input
           placeholder="email"
           type="email"
+          name="email"
           {...register("email", {
             required: "champ obligatoire",
             pattern: {

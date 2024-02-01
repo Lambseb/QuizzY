@@ -23,7 +23,7 @@ CREATE TABLE quiz (
   id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
   name VARCHAR(50) NOT NULL UNIQUE,
   validated BOOLEAN NOT NULL DEFAULT FALSE,
-  theme_id INT NOT NULL,
+  theme_id INT NULL,
   user_id INT NOT NULL,
   CONSTRAINT fk_quiz_theme FOREIGN KEY (theme_id) REFERENCES theme(id),
   CONSTRAINT fk_quiz_user FOREIGN KEY (user_id) REFERENCES user(id)
@@ -70,35 +70,35 @@ INSERT INTO theme (name) VALUES
 
 INSERT INTO user (username, email, password, is_admin) VALUES
   ('john_doe', 'john@example.com', 'hashed_password_1', FALSE),
-  ('alice_smith', 'alice@example.com', 'hashed_password_2', FALSE),
-  ('admin_user', 'admin@example.com', 'hashed_admin_password', TRUE),
-  ('test_user', 'test@example.com', 'hashed_test_password', FALSE),
-  ('jane_doe', 'jane@example.com', 'hashed_password_3', FALSE);
+  ('admin_user', 'admin@example.com', 'hashed_admin_password', TRUE);
+
 
 INSERT INTO quiz (name, validated, theme_id, user_id) VALUES
-  ('Quiz 1', TRUE, 1, 1),
-  ('Quiz 2', FALSE, 2, 2),
-  ('Quiz 3', TRUE, 3, 3),
-  ('Quiz 4', FALSE, 1, 4),
-  ('Quiz 5', TRUE, 2, 5);
+  ('Qui est Ayoub?', TRUE, 1, 1),
+  ('JavaScript ou PHP?', TRUE, 2, 2),
+  ('Que veux dire DOM?', TRUE, 3, 2);
 
 INSERT INTO response (response, value, quiz_id) VALUES
-  ('Option A', TRUE, 1),
-  ('Option B', FALSE, 1),
-  ('Option C', TRUE, 2),
-  ('Option D', FALSE, 2),
-  ('Option A', TRUE, 3);
+  ('qui?', FALSE, 1),
+  ('un dev de class S', TRUE, 1),
+  ('un fan de K-POP', FALSE, 1),
+  ('Digital influenceuse', FALSE, 1),
+  ('LOL?', FALSE, 2),
+  ('JavaScript', TRUE, 2),
+  ('PHP smurf smur', FALSE, 2),
+  ('Document Object Model', TRUE, 3),
+  ('Drill or Mods', FALSE, 3),
+  ('Dawn Of Mar', FALSE, 3);
 
 INSERT INTO quiz_story (action, quiz_id, user_id) VALUES
   ('created', 1, 1),
   ('done', 2, 2),
-  ('created', 3, 3),
-  ('done', 4, 4),
-  ('created', 5, 5);
+  ('created', 3, 2);
+
 
 INSERT INTO messaging (title, body, user_id) VALUES
   ('Welcome Message', 'Thank you for joining!', 1),
   ('New Feature Announcement', 'Exciting new features are now available!', 2),
-  ('Important Update', 'Please review the latest changes.', 3),
-  ('Reminder', 'Don''t forget to update your profile.', 4),
-  ('Event Invitation', 'You are invited to our upcoming event!', 5);
+  ('Important Update', 'Please review the latest changes.', 2),
+  ('Reminder', 'Don''t forget to update your profile.', 1),
+  ('Event Invitation', 'You are invited to our upcoming event!', 2);

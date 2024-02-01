@@ -2,19 +2,17 @@ const AbstractManager = require("./AbstractManager");
 
 class QuizManager extends AbstractManager {
   constructor() {
-    // Call the constructor of the parent class (AbstractManager)
-    // and pass the table name "quiz" as configuration
     super({ table: "quiz" });
   }
 
   // The C of CRUD - Create operation
 
   async create(quiz) {
-    const { name, validated } = quiz;
-    // Execute the SQL INSERT query to add a new quiz to the "quiz" table
+    const { name, user_id: userId } = quiz;
+
     const [result] = await this.database.query(
-      `insert into ${this.table} (name, validated) values (?, ?)`,
-      [name, validated]
+      `insert into ${this.table} (name, user_id) values (?, ?)`,
+      [name, userId]
     );
 
     // Return the ID of the newly inserted quiz

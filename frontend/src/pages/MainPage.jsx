@@ -5,11 +5,11 @@ import axios from "axios";
 export default function MainPage() {
   const NavBarLink = [
     {
-      name: "CREER UN QUIZ",
-      path: "/created",
+      name: "GESTION DES QUIZ",
+      path: "/manage",
     },
     {
-      name: "QUIZZY",
+      name: "QUIZZY !",
       path: "/quiz",
     },
     {

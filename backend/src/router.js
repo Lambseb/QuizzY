@@ -2,24 +2,20 @@ const express = require("express");
 
 const router = express.Router();
 
-const responseControllers = require("./controllers/responseControllers");
-// const validateResponse = require("./validators/validateResponse");
-
-router.get("/responses", responseControllers.browse);
-router.get("/responses/:id", responseControllers.read);
-// router.post("/responses", validateResponse, responseControllers.add);
-// router.put("/responses/:id", validateResponse, responseControllers.edit);
-// router.delete("/responses/:id", responseControllers.destroy);
-
-const { browse, read, browseByQuiz } = require("./controllers/quizControllers");
-// const validateQuiz = require("./validators/validateQuiz");
+const {
+  browse,
+  read,
+  add,
+  browseByQuiz,
+} = require("./controllers/quizControllers");
+const validateQuiz = require("./validators/validateQuiz");
 
 router.get("/quiz", browseByQuiz);
 router.get("/quiz/name_quiz", browse);
 router.get("/quiz/:id", read);
-// router.post("/quiz", validateQuiz, quizControllers.add);
-// router.put("/quizs/:id", validateQuiz, quizControllers.edit);
-// router.delete("/quizs/:id", quizControllers.destroy);
+router.post("/quiz", validateQuiz, add);
+// router.put("/quiz/:id", validateQuiz, quizControllers.edit);
+// router.delete("/quiz/:id", quizControllers.destroy);
 
 const quizStoryControllers = require("./controllers/quizStoryControllers");
 
@@ -46,6 +42,10 @@ router.get("/themes/:id", themeControllers.read);
 // router.post("/themes", validateTheme, themeControllers.add);
 // router.put("/themes/:id", validateTheme, themeControllers.edit);
 // router.delete("/themes/:id", themeControllers.destroy);
+
+const personRouter = require("./router/responseRouter");
+
+router.use("/responses", personRouter);
 
 const userRouter = require("./router/userRouter");
 

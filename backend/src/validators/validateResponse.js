@@ -2,9 +2,9 @@ const Joi = require("joi");
 
 const getResponseSchema = () => {
   return Joi.object({
-    id: Joi.number().presence("optional"),
     response: Joi.string().max(255).presence("required"),
     value: Joi.boolean(),
+    user_id: Joi.number().presence("required"),
   });
 };
 

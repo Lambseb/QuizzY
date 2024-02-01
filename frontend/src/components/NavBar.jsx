@@ -3,7 +3,6 @@ import { propTypes } from "prop-types";
 import quizzyImage from "../assets/quizzy.png";
 
 export default function NavBar({ auth }) {
-  console.log("NavBar.jsx", auth);
   return (
     <header>
       <nav className="flex justify-between mx-2">
@@ -30,3 +29,6 @@ export default function NavBar({ auth }) {
     </header>
   );
 }
+// propTypes = {
+//   auth: propTypes.object.isRequired,
+// };

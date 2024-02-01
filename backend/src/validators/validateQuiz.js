@@ -3,8 +3,8 @@ const Joi = require("joi");
 const getQuizSchema = () => {
   return Joi.object({
     id: Joi.number().presence("optional"),
-    name: Joi.string().max(50).presence("required"),
-    validated: Joi.boolean(),
+    name: Joi.string().min(5).presence("required"),
+    user_id: Joi.number(),
   });
 };
 
