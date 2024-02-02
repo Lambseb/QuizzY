@@ -2,15 +2,16 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import axios from "axios";
+import App from "./App";
 import MainPage from "./pages/MainPage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
-import ResponseCreated from "./components/quiz/ResponseCreatedQuiz";
 import QuizPage from "./pages/QuizPage";
-import CreateQuiz from "./components/quiz/CreateQuiz";
-import App from "./App";
 import ManageQuiz from "./pages/ManageQuiz";
 import NotPageFounded from "./pages/NotPageFounded";
+import ResponseCreated from "./components/quiz/ResponseCreatedQuiz";
+import CreateQuiz from "./components/quiz/CreateQuiz";
+import DeleteQuiz from "./components/quiz/DeleteQuiz";
 import "tailwindcss/tailwind.css";
 
 const router = createBrowserRouter([
@@ -38,6 +39,7 @@ const router = createBrowserRouter([
           },
           { path: "create", element: <CreateQuiz /> },
           { path: "responsecreated", element: <ResponseCreated /> },
+          { path: "delete", element: <DeleteQuiz /> },
         ],
       },
     ],

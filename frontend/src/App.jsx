@@ -5,7 +5,6 @@ import NavBar from "./components/NavBar";
 
 function App() {
   const [auth, setAuth] = useState();
-  console.log("App.jsx", auth);
   return (
     <>
       <NavBar auth={auth} setAuth={setAuth} />

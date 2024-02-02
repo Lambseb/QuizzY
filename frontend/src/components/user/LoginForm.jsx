@@ -22,11 +22,14 @@ export default function LoginForm() {
           headers: { "Content-Type": "application/json" },
         }
       );
+      toast.success("Authentification réussie");
       if (response.status === 200) {
         const auth = await response.data;
         setAuth(auth);
-        navigate("/");
         console.info(response);
+        setTimeout(() => {
+          navigate("/");
+        }, 3000);
       }
     } catch (err) {
       console.error(err);
@@ -37,7 +40,7 @@ export default function LoginForm() {
   };
 
   return (
-    <main className="max-w-md relative flex flex-col  p-4 rounded-md text-black bg-white">
+    <main className="max-w-md relative flex flex-col mt-8 p-4 rounded-md text-black bg-white bg-opacity-50 lg:m-auto lg:mt-10 ">
       <h2 className="text-2xl font-bold mb-2 text-[#1e0e4b] text-center">
         Bonjour
       </h2>
@@ -79,7 +82,7 @@ export default function LoginForm() {
         >
           Valider
         </button>
-        <ToastContainer />
+        <ToastContainer autoClose={3000} />
       </form>
       <div className="text-sm text-center mt-[1.6rem]">
         déja Quizzyzer ?{" "}

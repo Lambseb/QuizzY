@@ -33,8 +33,7 @@ CREATE TABLE response (
 id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
 response VARCHAR(255) NOT NULL,
 value BOOLEAN NOT NULL,
-quiz_id INT NOT NULL,
-CONSTRAINT fk_response_quiz FOREIGN KEY (quiz_id) REFERENCES quiz(id)
+quiz_id INT NOT NULL
 );
 
 CREATE TABLE quiz_story (
@@ -42,7 +41,6 @@ id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
 action ENUM('created', 'done') NOT NULL,
 quiz_id INT NOT NULL,
 user_id INT NOT NULL,
-CONSTRAINT fk_quiz_story_quiz FOREIGN KEY (quiz_id) REFERENCES quiz(id),
 CONSTRAINT fk_quiz_story_user FOREIGN KEY (user_id) REFERENCES user(id)
 );
 

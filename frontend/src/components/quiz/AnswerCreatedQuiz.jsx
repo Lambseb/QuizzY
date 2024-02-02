@@ -2,8 +2,8 @@
 
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-
-import { toast } from "react-toastify";
+import PropTypes from "prop-types";
+import { toast, ToastContainer } from "react-toastify";
 import axios from "axios";
 
 export default function AnswerCreatedQuiz({ auth }) {
@@ -21,11 +21,12 @@ export default function AnswerCreatedQuiz({ auth }) {
       );
       const answerUserId = response.data.id;
       const valueAnswer = data.name;
+      toast.success("Question validé, allons rajouter les réponses...");
       setTimeout(() => {
         navigate("/manage/responsecreated", {
           state: { answerUserId, valueAnswer },
         });
-      }, 1000);
+      }, 3000);
     } catch (error) {
       console.error(error);
       toast.error("La question n'a pas était envoyé");
@@ -35,7 +36,7 @@ export default function AnswerCreatedQuiz({ auth }) {
   return (
     <section>
       <form
-        className="mt-20 flex flex-col items-center "
+        className="mt-20 flex flex-col items-center"
         onSubmit={handleSubmit(onSubmit)}
       >
         <label className=" text-primary font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
@@ -51,7 +52,7 @@ export default function AnswerCreatedQuiz({ auth }) {
                 message: " 5 caractères minimum",
               },
             })}
-            className=" mt-2 flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+            className=" mt-2 flex h-10  rounded-md border border-input bg-background px-14 py-8 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
           />
           {errors.question?.message && (
             <p role="alert" className="text-lg font-light">
@@ -67,12 +68,35 @@ export default function AnswerCreatedQuiz({ auth }) {
         />
         <button
           type="submit"
-          className="bg-primary mt-2 rounded-sm w-[10rem]
-                 text-centerrounded-md text-main m-auto  text-white py-2 "
+          className="bg-primary mt-2 rounded-md w-[80%]
+                 text-centerrounded-md text-main m-auto  text-white py-6 lg:w-[25%]"
         >
           Valider le question
         </button>
       </form>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </section>
   );
 }
+AnswerCreatedQuiz.defaultProps = {
+  auth: undefined,
+};
+AnswerCreatedQuiz.propTypes = {
+  auth: PropTypes.shape({
+    user: PropTypes.shape({
+      username: PropTypes.string,
+      id: PropTypes.number,
+    }),
+  }),
+};

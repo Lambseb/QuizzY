@@ -10,9 +10,9 @@ function CreateQuiz() {
     <main>
       {auth === undefined ? (
         <div className="mt-20">
-          <h1 className="font-main text-xl flex align-middle text-center">
-            Vous devez être connecté pour accéder à cette page
-          </h1>
+          <p className="font-main font-primary text-xl flex align-middle text-center lg:justify-center">
+            Vous devez être connecté pour accéder a QuizzY
+          </p>
         </div>
       ) : (
         <AnswerCreatedQuiz auth={auth} />

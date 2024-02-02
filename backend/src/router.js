@@ -2,21 +2,6 @@ const express = require("express");
 
 const router = express.Router();
 
-const {
-  browse,
-  read,
-  add,
-  browseByQuiz,
-} = require("./controllers/quizControllers");
-const validateQuiz = require("./validators/validateQuiz");
-
-router.get("/quiz", browseByQuiz);
-router.get("/quiz/name_quiz", browse);
-router.get("/quiz/:id", read);
-router.post("/quiz", validateQuiz, add);
-// router.put("/quiz/:id", validateQuiz, quizControllers.edit);
-// router.delete("/quiz/:id", quizControllers.destroy);
-
 const quizStoryControllers = require("./controllers/quizStoryControllers");
 
 router.get("/quizstory", quizStoryControllers.browse);
@@ -54,5 +39,9 @@ router.use("/users", userRouter);
 const loginRouter = require("./router/authentification");
 
 router.use("/login", loginRouter);
+
+const quizRouter = require("./router/quizRouter");
+
+router.use("/quiz", quizRouter);
 
 module.exports = router;

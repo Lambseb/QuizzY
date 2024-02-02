@@ -6,7 +6,6 @@ import axios from "axios";
 function QuizPage() {
   const { data } = useLoaderData();
   const { auth } = useOutletContext();
-  console.log("l'authentification", auth);
   const [quiz, setQuiz] = useState();
   useEffect(() => {
     try {
@@ -28,9 +27,9 @@ function QuizPage() {
 
   return !auth ? (
     <div className="mt-20">
-      <h1 className="font-main text-xl flex align-middle text-center">
-        Vous devez être connecté pour accéder à cette page
-      </h1>
+      <p className="font-main font-primary text-xl flex align-middle text-center lg:justify-center">
+        Vous devez être connecté pour accéder a QuizzY
+      </p>
     </div>
   ) : (
     <main>
@@ -38,10 +37,13 @@ function QuizPage() {
         data.map((e) => (
           <section
             className="flex  flex-col font-main justify-center items-center my-4 
-            mx-20 lg:mx-80"
+             lg:mx-80"
             key={e.id}
           >
-            <p className="rounded-sm  bg-primary w-full py-2 text-center text-white">
+            <p
+              className="bg-primary  shadow-neutral-50 w-[80%]
+               text-center rounded-md text-main m-1 text-white py-6"
+            >
               n:°{e.id}: {e.name}
             </p>
             <article className="rounded-sm container flex flex-col items-center text-primary">
@@ -53,7 +55,7 @@ function QuizPage() {
                       onClick={() => HandleAnswer(element)}
                       key={element.id}
                       type="button"
-                      className="mt-1 bg-whiteborder rounded-sm w-full border py-2  duration-150 hover:bg-primary hover:text-white hover:duration-150"
+                      className="mt- bg-whiteborder bg-primary bg-opacity-50 text-white rounded-md w-[80%] border py-6 duration-150 hover:bg-sky-700 hover:text-white hover:duration-150"
                     >
                       {element.response}
                     </button>

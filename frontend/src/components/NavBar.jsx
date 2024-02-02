@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { propTypes } from "prop-types";
+import PropTypes from "prop-types";
 import quizzyImage from "../assets/quizzy.png";
 
 export default function NavBar({ auth }) {
@@ -15,20 +15,27 @@ export default function NavBar({ auth }) {
         </NavLink>
         {auth === undefined ? (
           <NavLink
-            className="font-main rounded-sm h-[2rem] px-2 mt-2 text-white text-[1.5rem] bg-primary"
+            className="font-main rounded-md h-[2rem] px-2 mt-2 text-white text-[1.5rem] bg-primary"
             to="/login"
           >
-            Se connecter
+            se connecter
           </NavLink>
         ) : (
-          <p className="font-main rounded-sm h-[2rem] px-2 mt-2 text-primary text-[1.2rem] shadow-md">
-            Bonjour {auth.user.username}
+          <p className="font-main  h-[2rem] px-2 mt-2 border shadow-primary rounded-md text-primary font-bold text-[1.2rem] shadow-md">
+            {auth.user.username}
           </p>
         )}
       </nav>
     </header>
   );
 }
-// propTypes = {
-//   auth: propTypes.object.isRequired,
-// };
+NavBar.defaultProps = {
+  auth: undefined,
+};
+NavBar.propTypes = {
+  auth: PropTypes.shape({
+    user: PropTypes.shape({
+      username: PropTypes.string,
+    }),
+  }),
+};

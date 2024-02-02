@@ -23,7 +23,7 @@ export default function RegisterForm() {
   const regexForm = /^(?=.*d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^wds:])([^s]){4,16}$/;
 
   return (
-    <div className="w-full max-w-md bg-white  rounded-lg p-6">
+    <div className="w-full max-w-md bg-white bg-opacity-50 rounded-lg p-6 lg:m-auto">
       <h2 className="text-2xl font-bold text-primary mb-4">Créer un compte</h2>
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col">
         <input
