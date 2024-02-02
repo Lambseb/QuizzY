@@ -2,6 +2,14 @@ const express = require("express");
 
 const router = express.Router();
 
+const quizStoryControllers = require("./controllers/quizStoryControllers");
+
+router.get("/quizstory", quizStoryControllers.browse);
+router.get("/quizstory/:id", quizStoryControllers.read);
+// router.post("/quiz_storys", quizStoryControllers.add);
+// router.put("/quiz_storys/:id" quizStoryControllers.edit);
+// router.delete("/quiz_storys/:id", quizStoryControllers.destroy);
+
 const messagingControllers = require("./controllers/messagingControllers");
 // const validateMessaging = require("./validators/validateMessaging");
 
@@ -10,7 +18,6 @@ router.get("/messagings/:id", messagingControllers.read);
 // router.post("/messagings", validateMessaging, messagingControllers.add);
 // router.put("/messagings/:id", validateMessaging, messagingControllers.edit);
 // router.delete("/messagings/:id", messagingControllers.destroy);
-
 
 const themeControllers = require("./controllers/themeControllers");
 // const validateTheme = require("./validators/validateTheme");
@@ -21,33 +28,20 @@ router.get("/themes/:id", themeControllers.read);
 // router.put("/themes/:id", validateTheme, themeControllers.edit);
 // router.delete("/themes/:id", themeControllers.destroy);
 
+const personRouter = require("./router/responseRouter");
 
-const userControllers = require("./controllers/userControllers");
-// const validateUser = require("./validators/validateUser");
+router.use("/responses", personRouter);
 
-router.get("/users", userControllers.browse);
-router.get("/users/:id", userControllers.read);
-// router.post("/users", validateUser, userControllers.add);
-// router.put("/users/:id", validateUser, userControllers.edit);
-// router.delete("/users/:id", userControllers.destroy);
+const userRouter = require("./router/userRouter");
 
+router.use("/users", userRouter);
 
-/* ************************************************************************* */
-// Define Your API Routes Here
-/* ************************************************************************* */
+const loginRouter = require("./router/authentification");
 
-// Import itemControllers module for handling item-related operations
-const itemControllers = require("./controllers/itemControllers");
+router.use("/login", loginRouter);
 
-// Route to get a list of items
-router.get("/items", itemControllers.browse);
+const quizRouter = require("./router/quizRouter");
 
-// Route to get a specific item by ID
-router.get("/items/:id", itemControllers.read);
-
-// Route to add a new item
-router.post("/items", itemControllers.add);
-
-/* ************************************************************************* */
+router.use("/quiz", quizRouter);
 
 module.exports = router;

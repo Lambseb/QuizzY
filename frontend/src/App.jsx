@@ -1,10 +1,15 @@
-import Counter from "./components/Counter";
+import { Outlet } from "react-router-dom";
+import "react-toastify/dist/ReactToastify.css";
+import { useState } from "react";
+import NavBar from "./components/NavBar";
 
 function App() {
+  const [auth, setAuth] = useState();
   return (
-    <div className="App">
-      <Counter />
-    </div>
+    <>
+      <NavBar auth={auth} setAuth={setAuth} />
+      <Outlet context={{ auth, setAuth }} />
+    </>
   );
 }
 

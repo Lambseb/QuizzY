@@ -6,7 +6,7 @@ const getMessagingSchema = () => {
     title: Joi.string().max(255).presence("required"),
     body: Joi.string().max(500).presence("required"),
     created_at: Joi.number().presence("required"),
-    is_read: Joi.number().presence("required"),
+    is_read: Joi.boolean().presence("required"),
   });
 };
 

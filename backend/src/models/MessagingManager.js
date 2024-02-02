@@ -10,11 +10,17 @@ class MessagingManager extends AbstractManager {
   // The C of CRUD - Create operation
 
   async create(messaging) {
-    const { title, body, created_at: createdAt, is_read: isRead } = messaging;
+    const {
+      title,
+      body,
+      created_at: createdAt,
+      is_read: isRead,
+      user_id: userId,
+    } = messaging;
     // Execute the SQL INSERT query to add a new messaging to the "messaging" table
     const [result] = await this.database.query(
-      `insert into ${this.table} (title, body, created_at, is_read, ) values (?, ?, ?, ?, ?)`,
-      [title, body, createdAt, isRead]
+      `insert into ${this.table} (title, body, created_at, is_read, user_id ) values (?, ?, ?, ?, ?)`,
+      [title, body, createdAt, isRead, userId]
     );
 
     // Return the ID of the newly inserted messaging

@@ -1,16 +1,19 @@
 
 // Import the manager modules responsible for handling data operations on the tables
-const ItemManager = require("./models/ItemManager");
 const UserManager = require("./models/UserManager");
 const ThemeManager = require("./models/ThemeManager");
-
 const MessagingManager = require("./models/MessagingManager");
+const QuizManager = require("./models/QuizManager");
+const ResponseManager = require("./models/ResponseManager");
+const QuizStoryManager = require("./models/QuizStoryManager");
 
 const managers = [
+  QuizStoryManager,
+  ResponseManager,
+  QuizManager,
   MessagingManager,
   ThemeManager,
   UserManager,
-  ItemManager,
   // Add other managers here
 ];
 
