@@ -13,7 +13,7 @@ divers features : création de compte, modification, création de quiz, répons
 
 feature du futur ✨ : implémenter des quiz sous forme de QCM, mettre une note sur le QCM, avoir un jolie design :
 
-<img src="https://image.noelshack.com/fichiers/2024/05/5/1706861207-capture-d-ecran-2024-02-02-090624.png" width="150" height="250" alt="QuizzY"><img src="https://image.noelshack.com/fichiers/2024/05/5/1706861297-capture-d-ecran-2024-02-02-090807.png" width="150" height="250" alt="QuizzY">
+<img src="https://image.noelshack.com/fichiers/2024/05/5/1706880605-small-logo-white-screen-name-quizzy-realistic-removebg-preview.png" width="100" height="100" alt="QuizzY"><img src="https://image.noelshack.com/fichiers/2024/05/5/1706880615-capture-d-ecran-2024-02-02-142944.png" width="120" height="200" alt="QuizzY">
 
 Api & package prévisionnel : 
 Argon2, zod, toastify, jsonwebtoken, framer-motion etc... 
