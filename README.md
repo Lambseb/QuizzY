@@ -1,5 +1,5 @@
-## Description:
 
+## Description: 
 QuizzY
 
 Application web qui vous permettra de créer et de faire des quiz sur une des thèmes divers et variés:
@@ -10,12 +10,13 @@ Langage: SQL
 
 divers features : création de compte, modification, création de quiz, réponse à des quiz, messages en commentaire, résultat de quiz, nombre de quiz effectué.
 
+
 feature du futur ✨ : implémenter des quiz sous forme de QCM, mettre une note sur le QCM, avoir un jolie design :
 
 <img src="https://image.noelshack.com/fichiers/2024/05/5/1706861207-capture-d-ecran-2024-02-02-090624.png" width="150" height="250" alt="QuizzY"><img src="https://image.noelshack.com/fichiers/2024/05/5/1706861297-capture-d-ecran-2024-02-02-090807.png" width="150" height="250" alt="QuizzY">
 
-Api & package prévisionnel :
-Argon2, zod, toastify, jsonwebtoken, framer-motion etc...
+Api & package prévisionnel : 
+Argon2, zod, toastify, jsonwebtoken, framer-motion etc... 
 
 ![HTML5](https://img.shields.io/badge/-HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/-CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
